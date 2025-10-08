@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %} Similar Quiz {% endblock %}
+{% block content %}
+
+<form method="POST">
+    <div class="movie-container" style="margin-top: 5rem;">
+        {% for key in displayed.keys() %}
+        <div class="form-group2" style="color: white;">
+            <div style="width: 200px; height: 50px; font-size: 12;">
+                <p>{{ displayed[key]['title']}} ({{ displayed[key]['year'] }})</p>
+            </div>
+            <img src="{{ displayed[key]['url'] }}" alt="Movie Poster" style="height: 270px; width: 200px; border: 2px solid white;">
+
+            <div class="checkboxes">
+                <input type="checkbox" id="w{{ key }}" name="w{{ key }}" value="{{ displayed[key]['movie_id'] }}">
+                <label for="w{{ key }}">Watched</label>
+
+                <input type="checkbox" id="ni{{ key }}" name="ni{{ key }}" value="{{ displayed[key]['movie_id'] }}">
+                <label for="ni{{ key }}">Not Interested</label>
+            </div>
+        </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">Submit</button>
+    </div>
+</form>
+{% endblock %}
